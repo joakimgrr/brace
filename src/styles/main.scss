@@ -1,0 +1,17 @@
+@import "ionicons/ionicons";
+
+$bg-color: #F5F9FB;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: $bg-color;
+}
+
+#app {
+    height: 100%;
+}

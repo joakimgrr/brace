@@ -11,8 +11,13 @@ module.exports = {
         filename: 'bundle.js'
     },
 
+    resolve: {
+        extensions: ['.js'],
+        modules: [ path.resolve(__dirname, 'src/components'), 'node_modules' ]
+    },
+
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -23,12 +28,9 @@ module.exports = {
                 test: /\.scss$/,
                 include: [path.resolve(__dirname, 'src')],
                 use: [
-                    {
-                        loader: 'css-loader'
-                    },
-                    {
-                        loader: 'sass-loader'
-                    }
+                    {loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader'}
                 ]
             },
 
@@ -38,8 +40,13 @@ module.exports = {
                 options: {
                     name: '[name].html'
                 }
+            },
+
+            {
+                test   : /\.(ttf|eot|svg|woff(2)?)$/,
+                loader : 'file-loader'
             }
-        ]
+        ],
     },
 
     devServer: {
