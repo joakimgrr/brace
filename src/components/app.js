@@ -1,14 +1,28 @@
-import React from 'react';
+import React from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunkMiddleware from 'redux-thunk'
 
-require('./app.scss')
+import rootReducer from '../reducers'
 
 import Sidebar from './sidebar'
 
+require('./app.scss')
+
+const store = createStore(
+    rootReducer,
+    applyMiddleware(
+        thunkMiddleware
+    )
+)
+
 function App(props) {
     return (
-        <div className="container">
-            <Sidebar />
-        </div>
+        <Provider store={store}>
+            <div className="container">
+                <Sidebar />
+            </div>
+        </Provider>
     )
 }
 
