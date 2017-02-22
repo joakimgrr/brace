@@ -1,4 +1,9 @@
 .sidebar {
     width: 80px;
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 8px;
+    box-sizing: border-box;
 }
