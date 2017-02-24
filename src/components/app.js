@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
 import rootReducer from '../reducers'
+import { fetchTimetable } from '../actions'
 
 import Sidebar from './sidebar'
 
@@ -15,6 +16,11 @@ const store = createStore(
         thunkMiddleware
     )
 )
+
+// console.log('store: ', store.getState())
+// console.log('dispatch: ', store.dispatch(fetchTimetable()))
+// console.log('store new: ', store.getState())
+
 
 function App(props) {
     return (

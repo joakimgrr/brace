@@ -8,8 +8,9 @@ require('./sidebar.scss')
 class Sidebar extends Component {
 
     componentDidMount() {
+        console.log('did mount')
         const { dispatch } = this.props
-        dispatch(fetchTimetable)
+        dispatch(fetchTimetable())
     }
 
     render() {
