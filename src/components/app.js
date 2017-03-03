@@ -12,9 +12,7 @@ require('./app.scss')
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(
-        thunkMiddleware
-    )
+    applyMiddleware(thunkMiddleware)
 )
 
 // console.log('store: ', store.getState())

@@ -14,12 +14,8 @@ function timetables(state = [], action) {
                     text: action.test
                 }
             ]
-        // case RECEIVE_TIMETABLE:
-        //
-        //     return [
-        //         ...state,
-        //         timetables: action.timetable
-        //     ]
+        case RECEIVE_TIMETABLE:
+            return action.timetable;
 
         default:
             return state
