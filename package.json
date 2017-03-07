@@ -35,6 +35,9 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "express": "^4.15.2",
+    "lokka": "^1.7.0",
+    "lokka-transport-http": "^1.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",

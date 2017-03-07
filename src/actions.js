@@ -2,15 +2,15 @@
 export const FETCH_TIMETABLE = 'FETCH_TIMETABLE'
 export const RECEIVE_TIMETABLE = 'RECEIVE_TIMETABLE'
 
-export function fetchTimetable() {
-    // return {
-    //     type: FETCH_TIMETABLE,
-    //     test: 'nakki'
-    // }
+const SERVER_URL = 'http://localhost:3000/'
 
+export function fetchTimetable() {
     return(dispatch) => {
-        //TODO: fetch data from graphQL
-        dispatch(receiveTimetable({ a: 'test', b: 'test1', c: 'test2'}));
+        fetch(SERVER_URL)
+            .then(response => {
+                return response.json()
+            })
+            .then(json => dispatch(receiveTimetable(json)));
     }
 }
 
