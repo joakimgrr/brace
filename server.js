@@ -37,13 +37,16 @@ async function fetchTimetable() {
                     },
                     realtimeArrival,
                     realtime,
-                    scheduledArrival
+                    scheduledArrival,
+                    serviceDay
                 }
             }
         }
         `)
         .then(response => {
-            timetableCache = response;
-            return response
+            const timetables = response.stop.stoptimesWithoutPatterns;
+
+            timetableCache = timetables;
+            return timetables
         });
 }

@@ -7,6 +7,7 @@ import rootReducer from '../reducers'
 import { fetchTimetable } from '../actions'
 
 import Sidebar from './sidebar'
+import Timetable from './timetable'
 
 require('./app.scss')
 
@@ -25,6 +26,7 @@ function App(props) {
         <Provider store={store}>
             <div className="container">
                 <Sidebar />
+                <Timetable />
             </div>
         </Provider>
     )

@@ -1,17 +1,9 @@
 import React, { Component } from 'react'
 import SidebarButton from 'sidebar-button'
-import { fetchTimetable } from '../../actions'
-import { connect } from 'react-redux'
 
 require('./sidebar.scss')
 
 class Sidebar extends Component {
-
-    componentDidMount() {
-        console.log('did mount')
-        const { dispatch } = this.props
-        dispatch(fetchTimetable())
-    }
 
     render() {
         return (
@@ -23,12 +15,4 @@ class Sidebar extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    const { timetables } = state;
-
-    return {
-        timetables
-    }
-}
-
-export default connect(mapStateToProps)(Sidebar);
+export default Sidebar
