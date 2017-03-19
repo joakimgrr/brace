@@ -25,7 +25,6 @@ function App(props) {
     return (
         <Provider store={store}>
             <div className="container">
-                <Sidebar />
                 <Timetable />
             </div>
         </Provider>
