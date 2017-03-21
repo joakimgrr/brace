@@ -8,6 +8,7 @@ import { fetchTimetable } from '../actions'
 
 import Sidebar from './sidebar'
 import Timetable from './timetable'
+import Weather from './weather'
 
 require('./app.scss')
 
@@ -16,16 +17,12 @@ const store = createStore(
     applyMiddleware(thunkMiddleware)
 )
 
-// console.log('store: ', store.getState())
-// console.log('dispatch: ', store.dispatch(fetchTimetable()))
-// console.log('store new: ', store.getState())
-
-
 function App(props) {
     return (
         <Provider store={store}>
             <div className="container">
                 <Timetable />
+                <Weather />
             </div>
         </Provider>
     )

@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux'
 
-import { FETCH_TIMETABLE, RECEIVE_TIMETABLE } from './actions'
+import {
+    FETCH_TIMETABLE,
+    RECEIVE_TIMETABLE,
+    FETCH_WEATHER,
+    RECEIVE_WEATHER
+} from './actions'
 
 function timetables(state = [], action) {
     console.log('timetables', action)
@@ -23,8 +28,19 @@ function timetables(state = [], action) {
     }
 }
 
+function weather(state = [], action) {
+    switch(action.type) {
+        case RECEIVE_WEATHER:
+            return action.weather
+
+        default:
+            return state
+    }
+}
+
 const rootReducer = combineReducers({
-    timetables
+    timetables,
+    weather
 })
 
 export default rootReducer;

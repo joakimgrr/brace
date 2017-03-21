@@ -7,8 +7,8 @@ const app = express();
 require('dotenv').config()
 
 const HSL_GRAPHQL_URL = 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql';
-const WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/forecast/';
-const HELSINKI = '658226';
+const WEATHER_URL = 'https://api.darksky.net/forecast';
+const HELSINKI = '60.1699,24.9384';
 
 const client = new Lokka({
     transport: new Transport(HSL_GRAPHQL_URL)
@@ -31,7 +31,9 @@ app.get('/weather', async (req, res) => {
     console.log('weather')
     const weatherData = await fetchWeatherData();
 
-    console.log('weather data: ', weatherData)
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     res.json(weatherData);
 })
@@ -39,11 +41,13 @@ app.get('/weather', async (req, res) => {
 app.listen(3000);
 
 async function fetchWeatherData() {
-    const fetchUrl = `${WEATHER_MAP_URL}city?id=${HELSINKI}&APPID=${process.env.OPEN_WEATHER_MAP_API_KEY}&units=metric`
+    const fetchUrl = `${WEATHER_URL}/${process.env.DARK_SKY_API_KEY}/${HELSINKI}?units=si`
     console.log('fetchurl: ', fetchUrl)
-    return fetch(fetchUrl)
+    return weatherDataCache ? weatherDataCache : fetch(fetchUrl)
         .then(res => {
-            return res.json()
+            let data = res.json();
+            weatherDataCache = data
+            return data;
         });
 }
 
