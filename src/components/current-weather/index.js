@@ -9,7 +9,7 @@ const CurrentWeather = ({ weather }) => {
 
     return(
         <div className="current-weather">
-            <i className="wi wi-rain"></i>
+            <i className="weather-icon wi wi-rain"></i>
             <span className="temperature">{temperature}</span><span className="degree">&deg;C</span>
         </div>
     )

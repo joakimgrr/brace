@@ -15,7 +15,6 @@ class Weather extends Component {
         const currentWeather = this.props.weather && this.props.weather.currently;
         return (
             <div>
-                <h1>weather</h1>
                 <CurrentWeather weather={currentWeather}/>
             </div>
         )

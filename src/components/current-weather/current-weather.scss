@@ -1,9 +1,23 @@
+@import "variables";
+
 .current-weather {
+    .weather-icon {
+        font-size: 10rem;
+        color: $font-color;
+    }
+
     .temperature {
+        font-size: 11rem;
+        margin-left: 0.5rem;
         font-weight: bold;
+        color: $font-color;
     }
 
     .degree {
-        
+        font-size: 3rem;
+        font-weight: 300;
+        line-height: 10rem;
+        vertical-align: top;
+        color: $font-color;
     }
 }
