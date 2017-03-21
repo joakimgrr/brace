@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 
 import TimetableRow from 'timetable-row'
 
+require('./timetable.scss')
+
 class Timetable extends Component {
     componentWillMount() {
         const { dispatch } = this.props
@@ -23,7 +25,7 @@ class Timetable extends Component {
         const timetables = this.props.timetables;
 
         return (
-            <div>
+            <div className="timetable">
                 {timetables.map((timetable) => <TimetableRow timetable={timetable} key={timetable.realtimeArrival}/> )}
             </div>
         )

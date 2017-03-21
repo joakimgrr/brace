@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 
 import CurrentWeather from 'current-weather'
 
+require('./weather.scss')
+
 class Weather extends Component {
     componentWillMount() {
         const { dispatch } = this.props
@@ -14,7 +16,7 @@ class Weather extends Component {
     render() {
         const currentWeather = this.props.weather && this.props.weather.currently;
         return (
-            <div>
+            <div className="weather">
                 <CurrentWeather weather={currentWeather}/>
             </div>
         )

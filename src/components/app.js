@@ -21,8 +21,15 @@ function App(props) {
     return (
         <Provider store={store}>
             <div className="container">
-                <Timetable />
-                <Weather />
+                <div className="timetable-wrapper">
+                    <div className="timetables">
+                        <Timetable />
+                        <Timetable />
+                    </div> 
+                </div>
+                <div className="weather-wrapper">
+                    <Weather />
+                </div>
             </div>
         </Provider>
     )
