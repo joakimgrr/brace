@@ -10,6 +10,9 @@ import Sidebar from './sidebar'
 import Timetable from './timetable'
 import Weather from './weather'
 
+const ARABIA_STOP_ID='HSL:1130446'
+const JATKASAARI_STOP_ID='HSL:1130447'
+
 require('./app.scss')
 
 const store = createStore(
@@ -23,9 +26,9 @@ function App(props) {
             <div className="container">
                 <div className="timetable-wrapper">
                     <div className="timetables">
-                        <Timetable />
-                        <Timetable />
-                    </div> 
+                        <Timetable stopId={JATKASAARI_STOP_ID} />
+                        <Timetable stopId={ARABIA_STOP_ID} />
+                    </div>
                 </div>
                 <div className="weather-wrapper">
                     <Weather />

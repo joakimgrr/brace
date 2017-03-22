@@ -20,7 +20,10 @@ function timetables(state = [], action) {
                 }
             ]
         case RECEIVE_TIMETABLE:
-            return action.timetable;
+            return Object.assign({}, state, {
+                [action.stopId]: action.timetable
+            })
+            //return action.timetable;
 
         default:
             return state

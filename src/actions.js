@@ -6,20 +6,21 @@ export const RECEIVE_WEATHER = 'RECEIVE_WEATHER'
 
 const SERVER_URL = 'http://localhost:3000/'
 
-export function fetchTimetable() {
+export function fetchTimetable(stopId) {
     return(dispatch) => {
-        fetch(SERVER_URL)
+        fetch(`${SERVER_URL}timetable/${stopId}`)
             .then(response => {
                 return response.json()
             })
-            .then(json => dispatch(receiveTimetable(json)));
+            .then(json => dispatch(receiveTimetable(json, stopId)));
     }
 }
 
-export function receiveTimetable(json) {
+export function receiveTimetable(json, stopId) {
     return {
         type: RECEIVE_TIMETABLE,
-        timetable: json
+        timetable: json,
+        stopId
         //received at timestamp?
     }
 }

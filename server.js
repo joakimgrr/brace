@@ -14,11 +14,11 @@ const client = new Lokka({
     transport: new Transport(HSL_GRAPHQL_URL)
 })
 
-let timetableCache = null;
+let timetableCache = {};
 let weatherDataCache = null;
 
-app.get('/', async (req, res) => {
-    const timetableData = await fetchTimetable();
+app.get('/timetable/:id', async (req, res) => {
+    const timetableData = await fetchTimetable(req.params.id);
 
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET');
@@ -42,7 +42,6 @@ app.listen(3000);
 
 async function fetchWeatherData() {
     const fetchUrl = `${WEATHER_URL}/${process.env.DARK_SKY_API_KEY}/${HELSINKI}?units=si`
-    console.log('fetchurl: ', fetchUrl)
     return weatherDataCache ? weatherDataCache : fetch(fetchUrl)
         .then(res => {
             let data = res.json();
@@ -51,10 +50,10 @@ async function fetchWeatherData() {
         });
 }
 
-async function fetchTimetable() {
-    return timetableCache ? timetableCache : client.query(`
+async function fetchTimetable(stopId) {
+    return timetableCache[stopId] ? timetableCache[stopId] : client.query(`
         {
-            stop(id: "HSL:1130447") {
+            stop(id: "${stopId}") {
                 stoptimesWithoutPatterns(timeRange: 10000) {
                     trip {
                         gtfsId,
@@ -74,7 +73,7 @@ async function fetchTimetable() {
         .then(response => {
             const timetables = response.stop.stoptimesWithoutPatterns;
 
-            timetableCache = timetables;
+            timetableCache[stopId] = timetables;
             return timetables
         });
 }

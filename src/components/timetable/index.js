@@ -9,8 +9,8 @@ require('./timetable.scss')
 
 class Timetable extends Component {
     componentWillMount() {
-        const { dispatch } = this.props
-        dispatch(fetchTimetable())
+        const { dispatch, stopId } = this.props
+        dispatch(fetchTimetable(stopId))
     }
 
     componentDidMount() {
@@ -22,18 +22,20 @@ class Timetable extends Component {
     }
 
     render() {
-        const timetables = this.props.timetables;
+        const timetables = this.props.timetables[this.props && this.props.stopId];
+        const headsign = timetables && timetables[0].trip.tripHeadsign;
 
         return (
             <div className="timetable">
-                {timetables.map((timetable) => <TimetableRow timetable={timetable} key={timetable.realtimeArrival}/> )}
+                <span className="timetable__headsign">{headsign}</span>
+                {timetables && timetables.map((timetable) => <TimetableRow timetable={timetable} key={timetable.realtimeArrival}/> )}
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    const { timetables } = state;
+    const { timetables } = state
 
     return {
         timetables
