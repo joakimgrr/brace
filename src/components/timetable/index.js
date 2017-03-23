@@ -17,7 +17,7 @@ class Timetable extends Component {
         const { dispatch } = this.props
 
         setInterval(() => {
-            dispatch(fetchTimetable())
+            dispatch(fetchTimetable(this.props.stopId))
         }, 1000 * 30)
     }
 

@@ -97,3 +97,10 @@ export function fetchWeather(req, res, next) {
             res.json(data)
         })
 }
+
+export function addCorsHeaders(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next()
+}

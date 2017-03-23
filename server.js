@@ -7,9 +7,10 @@ const checkTimetableCache = mw.checkTimetableCache;
 const fetchTimetable = mw.fetchTimetable;
 const checkWeatherCache = mw.checkWeatherCache;
 const fetchWeather = mw.fetchWeather;
+const addCorsHeaders = mw.addCorsHeaders;
 
-app.get('/timetable/:id', checkTimetableCache, fetchTimetable);
+app.get('/timetable/:id', addCorsHeaders, checkTimetableCache, fetchTimetable);
 
-app.get('/weather', checkWeatherCache, fetchWeather);
+app.get('/weather', addCorsHeaders, checkWeatherCache, fetchWeather);
 
 app.listen(3000);
