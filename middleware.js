@@ -6,8 +6,8 @@ const HSL_GRAPHQL_URL = 'https://api.digitransit.fi/routing/v1/routers/hsl/index
 const WEATHER_URL = 'https://api.darksky.net/forecast';
 const HELSINKI = '60.1699,24.9384';
 
-const THIRTY_SECONDS = '30000';
-const HOUR = '3600000';
+const FIFTEEN_SECONDS = 15000;
+const HOUR = 3600000;
 
 const client = new Lokka({
     transport: new Transport(HSL_GRAPHQL_URL)
@@ -25,7 +25,7 @@ export function checkTimetableCache(req, res, next) {
 
     if( timetableCache[stopId] &&
         timetableCache[stopId].data &&
-        (timetableCache[stopId].fetchedAt + THIRTY_SECONDS < now)
+        ((timetableCache[stopId].fetchedAt + FIFTEEN_SECONDS) > now)
     ) {
         res.json(timetableCache[stopId].data)
     } else {
@@ -38,7 +38,7 @@ export function checkWeatherCache(req, res, next) {
     const now = new Date().getTime();
 
     if( weatherCache.data &&
-        (weatherCache.fetchedAt + HOUR < now)
+        ((weatherCache.fetchedAt + HOUR) > now)
     ) {
         res.json(weatherCache.data)
     } else {

@@ -18,7 +18,7 @@ class Timetable extends Component {
 
         setInterval(() => {
             dispatch(fetchTimetable(this.props.stopId))
-        }, 1000 * 30)
+        }, 1000 * 5)
     }
 
     render() {
