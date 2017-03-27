@@ -20,8 +20,8 @@ export function receiveTimetable(json, stopId) {
     return {
         type: RECEIVE_TIMETABLE,
         timetable: json,
+        receivedAt: new Date().getTime(),
         stopId
-        //received at timestamp?
     }
 }
 
@@ -39,6 +39,7 @@ export function fetchWeather() {
 export function receiveWeather(json) {
     return {
         type: RECEIVE_WEATHER,
-        weather: json
+        weather: json,
+        receivedAt: new Date().getTime()
     }
 }
