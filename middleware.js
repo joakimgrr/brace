@@ -25,7 +25,7 @@ export function checkTimetableCache(req, res, next) {
 
     if( timetableCache[stopId] &&
         timetableCache[stopId].data &&
-        (timetableCache[stopId].fetchedAt + THIRTY_SECONDS > now)
+        (timetableCache[stopId].fetchedAt + THIRTY_SECONDS < now)
     ) {
         res.json(timetableCache[stopId].data)
     } else {
@@ -38,7 +38,7 @@ export function checkWeatherCache(req, res, next) {
     const now = new Date().getTime();
 
     if( weatherCache.data &&
-        (weatherCache.fetchedAt + HOUR > now)
+        (weatherCache.fetchedAt + HOUR < now)
     ) {
         res.json(weatherCache.data)
     } else {
