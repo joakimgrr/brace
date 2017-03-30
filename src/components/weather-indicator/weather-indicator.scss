@@ -1,6 +1,6 @@
 @import "variables";
 
-.current-weather {
+.weather-indicator {
     .weather-icon {
         font-size: 10rem;
         color: $font-color;
@@ -19,5 +19,12 @@
         line-height: 10rem;
         vertical-align: top;
         color: $font-color;
+    }
+
+    .time {
+        display: block;
+        text-align: center;
+        color: $font-color;
+        font-size: 1.3rem;
     }
 }

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-require('./current-weather.scss')
+require('./weather-indicator.scss')
 
 const ICONMAP = {
     'clear-day': 'wi-day-sunny',
@@ -15,17 +15,21 @@ const ICONMAP = {
     'partly-cloudy-night': 'wi-night-partly-cloudy'
 }
 
-const CurrentWeather = ({ weather }) => {
+const WeatherIndicator = ({ weather }) => {
 
     const iconId = weather && weather.icon;
     const temperature = weather && Math.round(weather.temperature);
+    const time = weather && weather.time && new Date(weather.time * 1000) || new Date();
+
+    const hour = ('0' + time.getHours()).slice(-2);
 
     return(
-        <div className="current-weather">
+        <div className="weather-indicator">
             <i className={`weather-icon wi ${ICONMAP[iconId]}`}></i>
             <span className="temperature">{temperature}</span><span className="degree">&deg;C</span>
+            <span className="time">{hour}:00</span>
         </div>
     )
 }
 
-export default CurrentWeather;
+export default WeatherIndicator;

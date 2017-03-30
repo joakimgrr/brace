@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { fetchWeather } from 'actions'
 import { connect } from 'react-redux'
 
-import CurrentWeather from 'current-weather'
+import WeatherIndicator from 'weather-indicator'
 
 require('./weather.scss')
 
@@ -15,9 +15,21 @@ class Weather extends Component {
 
     render() {
         const currentWeather = this.props.weather && this.props.weather.currently;
+        const upcomingWeathers = this.props.weather && this.props.weather.hourly && this.props.weather.hourly.data;
+
+        console.log(this.props.weather)
+
         return (
             <div className="weather">
-                <CurrentWeather weather={currentWeather}/>
+                <div className="weather__current-weather">
+                    <WeatherIndicator weather={currentWeather}/>
+                </div>
+                <div className="weather__upcoming-weather">
+                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[2]}/>
+                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[4]}/>
+                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[6]}/>
+                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[8]}/>
+                </div>
             </div>
         )
     }
