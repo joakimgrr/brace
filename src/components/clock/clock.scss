@@ -1,0 +1,9 @@
+@import "variables";
+
+.clock {
+    display: block;
+    color: $font-color;
+    text-align: center;
+    padding-top: 4rem;
+    font-size: 2rem;
+}

@@ -16,7 +16,7 @@ class Weather extends Component {
     render() {
         const currentWeather = this.props.weather && this.props.weather.currently;
         const upcomingWeathers = this.props.weather && this.props.weather.hourly && this.props.weather.hourly.data || [];
-        const weatherIntervals = [2,4,6,8];
+        const weatherIntervals = [3,6,9];
 
         return (
             <div className="weather">

@@ -9,6 +9,7 @@ import { fetchTimetable } from '../actions'
 import Sidebar from './sidebar'
 import Timetable from './timetable'
 import Weather from './weather'
+import Clock from './clock'
 
 const ARABIA_STOP_ID='HSL:1130446'
 const JATKASAARI_STOP_ID='HSL:1130447'
