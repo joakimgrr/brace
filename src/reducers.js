@@ -8,11 +8,9 @@ import {
 } from './actions'
 
 function timetables(state = [], action) {
-    console.log('timetables', action)
     switch (action.type) {
 
         case FETCH_TIMETABLE:
-            console.log('fetching timetable')
             return [
                 ...state,
                 {

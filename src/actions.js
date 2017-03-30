@@ -29,7 +29,6 @@ export function fetchWeather() {
     return(dispatch) => {
         fetch(`${SERVER_URL}weather`)
             .then(response => {
-                console.log('response: ', response)
                 return response.json()
             })
             .then(json => dispatch(receiveWeather(json)));
