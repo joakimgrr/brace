@@ -15,9 +15,8 @@ class Weather extends Component {
 
     render() {
         const currentWeather = this.props.weather && this.props.weather.currently;
-        const upcomingWeathers = this.props.weather && this.props.weather.hourly && this.props.weather.hourly.data;
-
-        console.log(this.props.weather)
+        const upcomingWeathers = this.props.weather && this.props.weather.hourly && this.props.weather.hourly.data || [];
+        const weatherIntervals = [2,4,6,8];
 
         return (
             <div className="weather">
@@ -25,10 +24,9 @@ class Weather extends Component {
                     <WeatherIndicator weather={currentWeather}/>
                 </div>
                 <div className="weather__upcoming-weather">
-                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[2]}/>
-                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[4]}/>
-                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[6]}/>
-                    <WeatherIndicator weather={upcomingWeathers && upcomingWeathers[8]}/>
+                    {upcomingWeathers.length > 0 && weatherIntervals.map(interval =>
+                        <WeatherIndicator key={upcomingWeathers[interval] && upcomingWeathers[interval].time} weather={upcomingWeathers[interval]}/>
+                    )}
                 </div>
             </div>
         )
